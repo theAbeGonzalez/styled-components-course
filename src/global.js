@@ -10,4 +10,13 @@ injectGlobal`
   body {
     margin: 0;
   }
+
+  @keyframes ul {
+    0% { 
+      width:0;
+    }
+    100% { 
+      width:calc(100% - 23px);
+    }
+  }
 `

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import './App.css'
+
+import { Border, Nav, NavItem } from './style'
 
 const getLinks = () => [
   { label: 'Home', url: '/' },
@@ -8,13 +9,11 @@ const getLinks = () => [
   { label: 'Hello!', url: '/hello' }
 ]
 
-const Nav = ({ children }) => <ul className='nav'>{children}</ul>
-
 const Zelda = ({ url, label, classes }) => (
-  <li className='link' key={url}>
+  <NavItem key={url}>
     <Link to={url}>{label}</Link>
-    <span className='border' />
-  </li>
+    <Border />
+  </NavItem>
 )
 
 class App extends Component {
