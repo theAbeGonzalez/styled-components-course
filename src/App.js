@@ -4,6 +4,19 @@ import './App.css'
 
 const getLinks = () => [ { label: 'Home', url: '/' }, { label: 'Woof!', url: '/dog' }, { label: 'Hello!', url: '/hello' } ]
 
+const Nav = ({children}) => (
+  <ul className='nav'>
+    {children}
+  </ul>
+)
+
+const Zelda = ({url, label, classes}) => (
+  <li className='link' key={url}>
+    <Link to={url}>{label}</Link>
+    <span className='border' />
+  </li>
+)
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -21,19 +34,16 @@ class App extends Component {
   }
 
   renderLinks () {
-    return this.state.links.map(({url, label}) => (
-      <li className='link' key={url}>
-        <Link to={url}>{label}</Link>
-        <span className='border' />
-      </li>
+    return this.state.links.map(link => (
+      <Zelda {...link} />
     ))
   }
 
   render () {
     return (
-      <ul className='nav'>
+      <Nav>
         {this.renderLinks()}
-      </ul>
+      </Nav>
     )
   }
 }
