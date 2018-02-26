@@ -1,4 +1,9 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
+const StyledLink = styled(Link)`
+  color: ${({ selected }) => (selected ? 'red !important' : 'black')};
+`
 
 const Nav = styled.ul`
   font-family: 'SoberanaSans';
@@ -38,4 +43,4 @@ const Border = styled.span`
   width: calc(100% - 23px);
 `
 
-export { Border, Nav, NavItem }
+export { Border, Nav, NavItem, StyledLink }

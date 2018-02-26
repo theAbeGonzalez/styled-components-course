@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
-import { Border, Nav, NavItem } from './style'
+import { Border, Nav, NavItem, StyledLink } from './style'
 
 const getLinks = () => [
   { label: 'Home', url: '/' },
@@ -9,9 +8,11 @@ const getLinks = () => [
   { label: 'Hello!', url: '/hello' }
 ]
 
-const Zelda = ({ url, label, classes }) => (
+const Zelda = ({ url, label, classes, selected }) => (
   <NavItem key={url}>
-    <Link to={url}>{label}</Link>
+    <StyledLink selected={selected} to={url}>
+      {label}
+    </StyledLink>
     <Border />
   </NavItem>
 )
@@ -28,12 +29,16 @@ class App extends Component {
 
   componentDidMount () {
     this.setState({
+      selected: '/',
       links: getLinks()
     })
   }
 
   renderLinks () {
-    return this.state.links.map(link => <Zelda {...link} />)
+    return this.state.links.map(link => {
+      const isSelected = this.state.selected === link.url
+      return <Zelda {...link} selected={isSelected} />
+    })
   }
 
   render () {
