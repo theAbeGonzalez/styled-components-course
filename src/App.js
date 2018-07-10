@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import './App.css'
-
+import CustomLink from './CustomLink'
+import CustomUL from './CustomUL'
 const getLinks = () => [ { label: 'Home', url: '/' }, { label: 'Woof!', url: '/dog' }, { label: 'Hello!', url: '/hello' } ]
+
 
 class App extends Component {
   constructor (props) {
@@ -22,18 +23,16 @@ class App extends Component {
 
   renderLinks () {
     return this.state.links.map(({url, label}) => (
-      <li className='link' key={url}>
-        <Link to={url}>{label}</Link>
-        <span className='border' />
-      </li>
+      <CustomLink key={url} href={url} label={label} />
     ))
   }
 
   render () {
     return (
-      <ul className='nav'>
-        {this.renderLinks()}
-      </ul>
+      // <StyledUl>
+      //   {this.renderLinks()}
+      // </StyledUl>
+      <CustomUL links={this.renderLinks()}/>
     )
   }
 }
